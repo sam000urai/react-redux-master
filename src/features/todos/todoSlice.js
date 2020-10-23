@@ -23,9 +23,10 @@ export const todoSlice = createSlice({
       console.log(state.todo, "state check")
       console.log(action.payload, "action check")
       state.todo = [];
-
-
     },
+
+
+
 
 
   },

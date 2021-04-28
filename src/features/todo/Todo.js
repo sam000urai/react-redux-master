@@ -12,23 +12,24 @@ export function Todo() {
   }
   return (
     <div>
-      <input type="text" value={event} onChange={e => setEvent(e.target.value)}/>
-        <button
-          aria-label="add_todo"
-          onClick={handleClick}
-        >
+      <input type="text" value={event} onChange={e => setEvent(e.target.value)} />
+      <button
+        aria-label="add_todo"
+        onClick={handleClick}
+      >
         add_todo
         </button>
-      <ul style={{textDecoration: 'none'}}>
-      {
-        todos.map(item => {console.log(item)
-          return (
+      <ul style={{ textDecoration: 'none' }}>
+        {
+          todos.map(item => {
+            console.log(item)
+            return (
               <li>{item.id}:{item.todo}</li>
             
-          )
-        })
-      }
-        </ul>
+            )
+          })
+        }
+      </ul>
     </div>
   );
 }

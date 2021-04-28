@@ -8,21 +8,22 @@ export function Todo() {
   const [event, setEvent] = useState('');
   const handleClick = () => {
     dispatch(add_todo({ id: todos.length + 1, todo: event }))
+    setEvent('')
   }
   return (
     <div>
-      <input type="text" onChange={e => setEvent(e.target.value)}/>
+      <input type="text" value={event} onChange={e => setEvent(e.target.value)}/>
         <button
           aria-label="add_todo"
           onClick={handleClick}
         >
         add_todo
         </button>
-      <ul>
+      <ul style={{textDecoration: 'none'}}>
       {
         todos.map(item => {console.log(item)
           return (
-              <li>{item.id}: {item.todo}</li>
+              <li>{item.id}:{item.todo}</li>
             
           )
         })

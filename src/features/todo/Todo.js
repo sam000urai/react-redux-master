@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectTodo, add_todo } from './todoSlice';
+import { selectTodo, add_todo, all_delete, point_delete } from './todoSlice';
 
 export function Todo() {
   const todos = useSelector(selectTodo);
@@ -10,6 +10,16 @@ export function Todo() {
     dispatch(add_todo({ id: todos.length + 1, todo: event }))
     setEvent('')
   }
+
+  const allDelete = () => {
+    dispatch(all_delete());
+  };
+
+  const pointDelete = () => {
+    dispatch(point_delete());
+  };
+
+
   return (
     <div>
       <input type="text" value={event} onChange={e => setEvent(e.target.value)} />
@@ -19,13 +29,18 @@ export function Todo() {
       >
         add_todo
         </button>
+      <button onClick={allDelete} >
+        ALL_DELETE
+      </button>
+
+
       <ul style={{ textDecoration: 'none' }}>
         {
           todos.map(item => {
             console.log(item)
             return (
-              <li>{item.id}:{item.todo}</li>
-            
+              <li>{item.id}:{item.todo}<button onClick={pointDelete}>削除</button></li>
+
             )
           })
         }

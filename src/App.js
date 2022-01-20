@@ -4,7 +4,29 @@ import { Counter } from './features/counter/Counter';
 import { Todo } from './features/todo/Todo';
 import './App.css';
 
+import { fetchData, selectData } from './features/fetch/fetchSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+
+
 function App() {
+
+  const data = useSelector(selectData);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetchUserData();
+    // eslint-disable-next-line
+  }, []);
+  const fetchUserData = async () => {
+    await dispatch(fetchData());
+  };
+  console.log(data);
+
+
+
+
+
   return (
     <div className="App">
       <header className="App-header">

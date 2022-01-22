@@ -7,6 +7,7 @@ import './App.css';
 import { fetchData, selectData } from './features/fetch/fetchSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { getTodoData, selectGetTodoData } from './features/getTodo/getTodoSlice';
 
 
 function App() {
@@ -22,6 +23,20 @@ function App() {
     await dispatch(fetchData());
   };
   console.log(data);
+
+  // eslint-disable-next-line
+  const getData = useSelector(selectGetTodoData);
+
+
+  useEffect(() => {
+    fetchTodoData();
+    // eslint-disable-next-line
+  }, []);
+  const fetchTodoData = async () => {
+    await dispatch(getTodoData());
+  };
+  console.log(getData);
+
 
 
 

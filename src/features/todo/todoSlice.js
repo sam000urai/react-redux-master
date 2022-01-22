@@ -20,9 +20,14 @@ export const todoSlice = createSlice({
     all_delete: (state) => {
       state.value = []
     },
-    point_delete: (state) => {
-      const point = state.filter(state => state.id === 9999);
-      return point
+    // point_delete: (state) => {
+    //   const point = state.filter(state => state.id === 9999);
+    //   return point
+    // }
+
+    point_delete: (state, action) => {
+      const result = state.value.filter(v => v.id !== action.payload)
+      state.value = result
     }
 
   }

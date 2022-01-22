@@ -11,13 +11,12 @@ export function Todo() {
     setEvent('')
   }
 
+
   const allDelete = () => {
     dispatch(all_delete());
   };
 
-  const pointDelete = () => {
-    dispatch(point_delete());
-  };
+
 
 
   return (
@@ -35,14 +34,16 @@ export function Todo() {
 
 
       <ul style={{ textDecoration: 'none' }}>
-        {
-          todos.map(item => {
-            console.log(item)
-            return (
-              <li>{item.id}:{item.todo}<button onClick={pointDelete}>削除</button></li>
+        {todos.map(item => {
+          console.log(item)
+          const pointDelete = () => {
+            dispatch(point_delete(item.id))
+          }
+          return (
+            <li>{item.id}:{item.todo}<button onClick={pointDelete}>削除</button></li>
 
-            )
-          })
+          )
+        })
         }
       </ul>
     </div>

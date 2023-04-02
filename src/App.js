@@ -1,10 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import { Todo } from './features/todo/Todo';
 import './App.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchData, selectData } from './features/fetch/fetchSlice';
+import { fetchTodos, selectTodos } from './features/getTodo/getTodoSlice';
+
 
 function App() {
+  const data = useSelector(selectData);
+  const todos = useSelector(selectTodos);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      await dispatch(fetchData());
+    };
+    fetchUserData();
+
+    const fetchTodosData = async () => {
+      await dispatch(fetchTodos());
+    };
+    fetchTodosData();
+  }, [dispatch]);
+
+  console.log("Fetched todos: ", todos);
+  console.log(data);
+
   return (
     <div className="App">
       <header className="App-header">

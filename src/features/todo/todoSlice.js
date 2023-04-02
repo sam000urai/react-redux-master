@@ -12,7 +12,7 @@ export const todoSlice = createSlice({
       const event = action.payload
       console.log(event)
       state.value.push(event)
-      // state.value = [...state.value, ...event]
+      // state.value = [...state.value,...event]
     },
 
     all_delete: (state) => {
